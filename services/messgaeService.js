@@ -10,6 +10,18 @@ const createMessage = async (data) => {
   }
 };
 
+const getMessage = async (data) => {
+  try {
+    // const details = await Users.findAll();
+    const details = await Users.findAll({
+      attributes: ["name", "email", "message"],
+    });
+    return details;
+  } catch (error) {
+    throw new Error("Error creating message: " + error.message);
+  }
+};
 module.exports = {
   createMessage,
+  getMessage,
 };

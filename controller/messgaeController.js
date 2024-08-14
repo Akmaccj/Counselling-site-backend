@@ -1,7 +1,6 @@
 const messageService = require("../services/messgaeService");
 
 const createMessage = async (req, res) => {
-  console.log(req.body);
   const { name, message, email } = req.body;
   try {
     if (!name || !message || !email) {
@@ -19,6 +18,17 @@ const createMessage = async (req, res) => {
   }
 };
 
+const getMessage = async (req, res) => {
+  try {
+    console.log("Controller");
+    const getMessage = await messageService.getMessage();
+    return res.status(201).json(getMessage);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createMessage,
+  getMessage,
 };

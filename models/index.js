@@ -19,6 +19,7 @@ if (config.use_env_variable) {
     logging: false, // You can set this to true to see SQL queries
   });
 }
+console.log(__dirname);
 
 fs.readdirSync(__dirname)
   .filter((file) => {
